@@ -22,7 +22,7 @@ class CurlCffi < Formula
   depends_on :macos
   depends_on "python3"
 
-  pypi_packages package_name:     "curl-cffi",
+  pypi_packages package_name:     "",
                 exclude_packages: %w[certifi cffi]
 
   resource "markdown-it-py" do
@@ -46,10 +46,13 @@ class CurlCffi < Formula
   end
 
   def install
-    python3 = "python3"
-    venv = virtualenv_create(libexec, python3)
+    venv = virtualenv_create(libexec, "python3")
     venv.pip_install resources
-    venv.pip_install_and_link cached_download, build_isolation: false
+
+    # Homebrew caches downloads with a hash prefix that pip rejects for wheels.
+    wheel = buildpath/cached_download.basename.to_s.sub(/^[0-9a-f]{64}--/, "")
+    cp cached_download, wheel
+    venv.pip_install_and_link wheel, build_isolation: false
   end
 
   test do
