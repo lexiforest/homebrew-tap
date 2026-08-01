@@ -3,17 +3,17 @@ class CurlCffi < Formula
 
   desc "HTTP client CLI with browser impersonation support"
   homepage "https://github.com/lexiforest/curl_cffi"
-  version "0.15.0"
+  version "0.16.0"
   license "MIT"
 
   stable do
     on_arm do
-      url "https://files.pythonhosted.org/packages/83/2d/3915e238579b3c5a92cead5c79130c3b8d20caaba7616cc4d894650e1d6b/curl_cffi-0.15.0-cp310-abi3-macosx_11_0_arm64.whl"
-      sha256 "a25620d9bf989c9c029a7d1642999c4c265abb0bad811deb2f77b0b5b2b12e5b"
+      url "https://files.pythonhosted.org/packages/2e/49/3b502d0d09e427b1bdec4f7339bb115c971c9b3fdaf355d02ca06e97ad61/curl_cffi-0.16.0-cp310-abi3-macosx_11_0_arm64.whl"
+      sha256 "edd5f6e8f122157f4d2351b0b5e48e6a1c0677a2064da71451bb30ef57af19ba"
     end
     on_intel do
-      url "https://files.pythonhosted.org/packages/5e/42/54ddd442c795f30ce5dd4e49f87ce77505958d3777cd96a91567a3975d2a/curl_cffi-0.15.0-cp310-abi3-macosx_10_9_x86_64.whl"
-      sha256 "bda66404010e9ed743b1b83c20c86f24fe21a9a6873e17479d6e67e29d8ded28"
+      url "https://files.pythonhosted.org/packages/fd/fe/0c330de78421af13e6384ab948e3adbcd4c638b06b53b7fff108bf1db121/curl_cffi-0.16.0-cp310-abi3-macosx_10_9_x86_64.whl"
+      sha256 "6128021320f74999ec1216c1817b2c3adcb0f334d204add1ccf18e248bf7efcb"
     end
   end
 
