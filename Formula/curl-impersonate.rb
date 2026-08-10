@@ -1,21 +1,21 @@
 class CurlImpersonate < Formula
-  desc "curl build that impersonates browser TLS/HTTP fingerprints"
+  desc "Curl build that impersonates browser TLS/HTTP fingerprints"
   homepage "https://github.com/lexiforest/curl-impersonate"
+  version "2.1.0"
   license "MIT"
-  version "2.0.0"
+
+  depends_on "ca-certificates"
 
   on_macos do
     on_arm do
-      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.0.0/curl-impersonate-v2.0.0.arm64-macos.tar.gz"
-      sha256 "deda8cef7a7ec05f4a56e67d10e7faaf0bf2d200d3bef1043cdc0fded7f10d0e"
+      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.1.0/curl-impersonate-v2.1.0.arm64-macos.tar.gz"
+      sha256 "eaba6c9f8246310dae2d7168f2264f458518a0894262230da7309b9cdb1c5260"
     end
     on_intel do
-      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.0.0/curl-impersonate-v2.0.0.x86_64-macos.tar.gz"
-      sha256 "4588e32ac5a3fde7f8a3922653e81e5232b94990cf8298c1f26102bb5b0f720b"
+      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.1.0/curl-impersonate-v2.1.0.x86_64-macos.tar.gz"
+      sha256 "8a945a35cb715dab02958ffb4a49ae2f6f9f146c8e366a3201942e30a4993384"
     end
   end
-
-  depends_on "ca-certificates"
 
   def install
     bin.install Dir["*"]
