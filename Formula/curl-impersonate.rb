@@ -1,19 +1,19 @@
 class CurlImpersonate < Formula
   desc "Curl build that impersonates browser TLS/HTTP fingerprints"
   homepage "https://github.com/lexiforest/curl-impersonate"
-  version "2.1.1"
+  version "2.2.3"
   license "MIT"
 
   depends_on "ca-certificates"
 
   on_macos do
     on_arm do
-      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.1.1/curl-impersonate-v2.1.1.arm64-macos.tar.gz"
-      sha256 "09247a144471f85540185a177c5b2ba630ee25d5e5acf283c13dbbf6da865cef"
+      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.2.3/curl-impersonate-v2.2.3.arm64-macos.tar.gz"
+      sha256 "2569f4139460fcb301484d37938de91b1c220efd15487ee22a9db554262062fe"
     end
     on_intel do
-      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.1.1/curl-impersonate-v2.1.1.x86_64-macos.tar.gz"
-      sha256 "db2cd649164bd5639e9314c127f6ffcac2cb70a53d65987092488d9f616943ac"
+      url "https://github.com/lexiforest/curl-impersonate/releases/download/v2.2.3/curl-impersonate-v2.2.3.x86_64-macos.tar.gz"
+      sha256 "4686806d59abea93866a917c3025a049ef3d7a3240de742ad66bd1a4d9890dc7"
     end
   end
 
