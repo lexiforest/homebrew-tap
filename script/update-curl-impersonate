@@ -19,6 +19,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_FORMULA = REPO_ROOT / "Formula" / "curl-impersonate.rb"
 GITHUB_REPO = "lexiforest/curl-impersonate"
 LATEST_RELEASE_URL = f"https://api.github.com/repos/{GITHUB_REPO}/releases/latest"
+PLATFORMS = {
+    "macos": {"arm": "arm64-macos", "intel": "x86_64-macos"},
+    "linux": {"arm": "aarch64-linux-gnu", "intel": "x86_64-linux-gnu"},
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -103,9 +107,6 @@ def update_formula(formula: str, release: dict[str, Any]) -> tuple[str, str]:
     version = tag.removeprefix("v")
     assets = release["assets"]
 
-    arm_asset = find_asset(assets, tag, "arm64-macos")
-    intel_asset = find_asset(assets, tag, "x86_64-macos")
-
     formula, version_replacements = re.subn(
         r'^\s+version "[^"]+"',
         f'  version "{version}"',
@@ -116,18 +117,18 @@ def update_formula(formula: str, release: dict[str, Any]) -> tuple[str, str]:
     if version_replacements != 1:
         raise SystemExit("Could not update version")
 
-    formula = replace_arch_block(
-        formula,
-        "arm",
-        arm_asset["browser_download_url"],
-        sha256_for(arm_asset),
-    )
-    formula = replace_arch_block(
-        formula,
-        "intel",
-        intel_asset["browser_download_url"],
-        sha256_for(intel_asset),
-    )
+    for os_name, architectures in PLATFORMS.items():
+        # Scope architecture replacements to their OS: both have on_arm/on_intel.
+        pattern = re.compile(rf"^  on_{os_name} do\n.*?^  end$", re.MULTILINE | re.DOTALL)
+        matches = list(pattern.finditer(formula))
+        if len(matches) != 1:
+            raise SystemExit(f"Could not update on_{os_name} block")
+        match = matches[0]
+        block = match.group()
+        for arch, platform in architectures.items():
+            asset = find_asset(assets, tag, platform)
+            block = replace_arch_block(block, arch, asset["browser_download_url"], sha256_for(asset))
+        formula = formula[:match.start()] + block + formula[match.end():]
     return formula, tag
 
 

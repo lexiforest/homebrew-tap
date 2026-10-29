@@ -3,22 +3,32 @@ class CurlCffi < Formula
 
   desc "HTTP client CLI with browser impersonation support"
   homepage "https://github.com/lexiforest/curl_cffi"
-  version "0.16.3"
+  version "0.17.0"
   license "MIT"
 
   depends_on "certifi" => :no_linkage
   depends_on "cffi" => :no_linkage
-  depends_on :macos
   depends_on "python3"
 
   on_macos do
     on_arm do
-      url "https://files.pythonhosted.org/packages/4c/86/e21b8ed384db26401a4438f20f01c7bcd9c3a6f8ceede458344e2d62775c/curl_cffi-0.16.3-cp310-abi3-macosx_11_0_arm64.whl"
-      sha256 "f3b63da797912bc82911e34dfe449725514e4281527fb516931fc457087cfb44"
+      url "https://files.pythonhosted.org/packages/dc/ab/cd7e71bc96c36521193d3dcd38e1a08a9939538fc34b50ba81f30201f9b3/curl_cffi-0.17.0-cp310-abi3-macosx_11_0_arm64.whl"
+      sha256 "88cb5e34eb23eb2106711b06df68027209c72be709df239c6029345551e0acfd"
     end
     on_intel do
-      url "https://files.pythonhosted.org/packages/79/7a/ec08ef0665c4ef4ea76b47042eb1c043e4afb374d8b9218e00272c9e73a2/curl_cffi-0.16.3-cp310-abi3-macosx_10_9_x86_64.whl"
-      sha256 "0f1f6878863fba393801e4d59b2f2766d1983b5c9d9dfa11d4becfd6a74cc937"
+      url "https://files.pythonhosted.org/packages/c6/f8/6e289cc68d943c4625732eb253bdeec92c5022c7d5ea9215c0581c526789/curl_cffi-0.17.0-cp310-abi3-macosx_10_9_x86_64.whl"
+      sha256 "56d622930eac5cee4cc6ebe63eaba3ecca65a2c73aa6bdf099c2ffae55ee988c"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://files.pythonhosted.org/packages/e6/6f/063eb68f3353bde506f4ca01005b24a07f59103bc8640889ea1954af9302/curl_cffi-0.17.0-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl"
+      sha256 "aa91d26234516ddb9eb97310d5fe1705aa6f677f101d57ffdb76d5f75439506e"
+    end
+    on_intel do
+      url "https://files.pythonhosted.org/packages/e5/ef/7bb612007cf254ad6406e9563201baf87f57686308353b0fefde4b356212/curl_cffi-0.17.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+      sha256 "af0782d5e340b65fd76701630f0284a8f8243d77df5f2637efd09a4b009f4e24"
     end
   end
 
